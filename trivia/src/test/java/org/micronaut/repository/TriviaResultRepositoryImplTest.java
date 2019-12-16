@@ -22,14 +22,14 @@ public class TriviaResultRepositoryImplTest {
     void getResultAttempts() {
 
         ResultAttempt resultAttempt1 = new ResultAttempt();
-        resultAttempt1.setAnswered("Donald Trump");
-        resultAttempt1.setQuizId(1L);
+        resultAttempt1.setAnswer("Donald Trump");
+        resultAttempt1.setQuestion("Who is the president of the USA");
         resultAttempt1.setResult(true);
         resultAttempt1.setUser(new User("Joe"));
 
         ResultAttempt resultAttempt2 = new ResultAttempt();
-        resultAttempt2.setAnswered("Peter Parker");
-        resultAttempt2.setQuizId(2L);
+        resultAttempt2.setAnswer("Peter Parker");
+        resultAttempt2.setQuestion("What's the real name of Spiderman");
         resultAttempt2.setResult(true);
         resultAttempt2.setUser(new User("John"));
 
@@ -38,7 +38,7 @@ public class TriviaResultRepositoryImplTest {
         assertEquals(2, repository.count());
 
         List<ResultAttempt> attempt = repository.findByUserName("Joe");
-        assertSame("Donald Trump", attempt.get(0).getAnswered());
+        assertSame("Donald Trump", attempt.get(0).getAnswer());
     }
 
 }

@@ -33,14 +33,14 @@ public class TriviaResultServiceTest {
     void getTriviaResults(){
 
         ResultAttempt resultAttempt1 = new ResultAttempt();
-        resultAttempt1.setAnswered("Donald Trump");
-        resultAttempt1.setQuizId(1L);
+        resultAttempt1.setAnswer("Donald Trump");
+        resultAttempt1.setQuestion("Who is the president of the USA");
         resultAttempt1.setResult(true);
         resultAttempt1.setUser(new User("Joe"));
 
         ResultAttempt resultAttempt2 = new ResultAttempt();
-        resultAttempt2.setAnswered("Peter Parker");
-        resultAttempt2.setQuizId(2L);
+        resultAttempt2.setAnswer("Peter Parker");
+        resultAttempt2.setQuestion("What's the real name of Spiderman");
         resultAttempt2.setResult(true);
         resultAttempt2.setUser(new User("Joe"));
 
@@ -49,8 +49,8 @@ public class TriviaResultServiceTest {
 
         final List<ResultAttempt> resultAttempts = triviaResultService.getResults("Joe");
 
-        assertEquals(resultAttempts.get(0).getAnswered(), resultAttempt1.getAnswered());
-        assertEquals(resultAttempts.get(1).getAnswered(), resultAttempt2.getAnswered());
+        assertEquals(resultAttempts.get(0).getAnswer(), resultAttempt1.getAnswer());
+        assertEquals(resultAttempts.get(1).getAnswer(), resultAttempt2.getAnswer());
 
     }
 

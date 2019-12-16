@@ -21,16 +21,16 @@ public class ResultAttempt {
     @JoinColumn(name = "USER_ID")
     private User user;
 
-    private Long quizId;
+    private String question;
 
-    private String answered;
+    private String answer;
 
     private boolean result;
 
-    public ResultAttempt(User user, Long quizId, String answered, boolean result) {
+    public ResultAttempt(User user, String question, String answer, boolean result) {
         this.user = user;
-        this.quizId = quizId;
-        this.answered = answered;
+        this.question = question;
+        this.answer = answer;
         this.result = result;
     }
 

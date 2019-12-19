@@ -1,0 +1,28 @@
+.App {
+  width: 80%;
+  margin: 40px auto;
+}
+
+.Question {
+  grid-area: question;
+}
+.Statistics {
+  grid-area: statistics;
+}
+.LeaderBoard {
+  grid-area: leaderboard;
+}
+.MedalTally {
+  grid-area: medaltally;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 23% 23% 8% 23% 23%;
+  grid-template-rows: auto;
+  grid-template-areas:
+    'question question . leaderboard leaderboard'
+    'question question . leaderboard leaderboard'
+    'statistics statistics . medaltally medaltally'
+    'statistics statistics . medaltally medaltally';
+}

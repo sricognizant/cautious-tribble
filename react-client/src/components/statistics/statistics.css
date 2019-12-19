@@ -1,0 +1,25 @@
+.Statistics {
+  padding: 20px 0;
+}
+
+.Statistics table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.Statistics td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.Statistics th {
+  background-color: #1546a1;
+  color: white;
+}
+
+.Statistics tr:nth-child(even) {
+  background-color: #dddddd;
+}

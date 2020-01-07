@@ -1,0 +1,26 @@
+.LeaderBoard h1 {
+  padding: 0px;
+  margin: 0px;
+}
+
+.LeaderBoard table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.LeaderBoard td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.LeaderBoard th {
+  background-color: #1546a1;
+  color: white;
+}
+
+.LeaderBoard tr:nth-child(even) {
+  background-color: #dddddd;
+}

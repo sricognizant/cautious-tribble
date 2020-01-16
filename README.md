@@ -1,6 +1,6 @@
 # Evaluating Micronaut Part 1
 
-##Application Architecture:
+## Application Architecture:
 
 ![Application - version 8](micronaut-arc.png)
 
@@ -10,6 +10,6 @@
 -	Gamification microservices manages all gamification busing logic and including checking the result, assign points, assign badges and updates the highest score board. It uses MongoDB for data storage.
 
 
-##Web UI:
+## Web UI:
 
 ![Application - version 8](micronaut-app-ui.png)

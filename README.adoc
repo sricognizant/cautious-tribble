@@ -1,6 +1,6 @@
 # Evaluating Micronaut Part 1
 
-## Software Requirements
+=== Software Requirements
 
 In order to do this workshop, you need the following:
 
@@ -14,7 +14,7 @@ In order to do this workshop, you need the following:
     - `consul`.
     - `mongo`.
 
-Micronaut CLI
+=== Micronaut CLI
 
 1. Install http://sdkman.io[SDKMAN!] if you haven't done so already.
 2. Install Micronaut CLI:
@@ -26,3 +26,17 @@ Micronaut CLI
     $ mn --version
     | Micronaut Version: 1.2.6
     | JVM Version: 1.8.0_232
+
+=== Clone this repository
+
+Once done, you can clone this repo:
+
+----
+git clone https://github.com/linoyabut/micronaut-app.git
+----
+
+NOTE: For Part 1, Instead of event-driven approach for sending  any events (like user's attempt) from UI,
+we call gamification API to mutate the game stat data. This is a kind of Remote Procedure Call (RPC) approach.
+Also, we've used RDBMS temporarily for gamification data store.[]
+
+

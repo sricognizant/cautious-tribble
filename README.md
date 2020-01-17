@@ -1,15 +1,28 @@
 # Evaluating Micronaut Part 1
 
-## Application Architecture:
+## Software Requirements
 
-![Application - version 8](micronaut-arc.png)
+In order to do this workshop, you need the following:
 
+* Linux or MacOS with shell access, and the following installed:
+    - `curl`.
+    - `wget`.
+    - `unzip`.
+    - `git`.
+* JDK 8.
+* Docker. Please pull the following images before attending the workshop:
+    - `consul`.
+    - `mongo`.
 
--	Trivia microservices is responsible for sending the event, storing data, checking attempts and generate result. It uses hibernate as a data access layer.
+Micronaut CLI
 
--	Gamification microservices manages all gamification busing logic and including checking the result, assign points, assign badges and updates the highest score board. It uses MongoDB for data storage.
+1. Install http://sdkman.io[SDKMAN!] if you haven't done so already.
+2. Install Micronaut CLI:
 
+    $ sdk install micronaut
 
-## Web UI:
+3. Ensure the CLI is installed properly:
 
-![Application - version 8](micronaut-app-ui.png)
+    $ mn --version
+    | Micronaut Version: 1.2.6
+    | JVM Version: 1.8.0_232

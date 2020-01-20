@@ -47,8 +47,7 @@ image::micronaut-arc.png[]
 image::micronaut-app-ui.png[]
 
 
-
-The Web UI will call Trivia API for questions data and then will call Gamification API for High Scores data.  Every user’s attempt, UI will call the Trivia API to process the user’s attempt data (please refer to the application architecture).
+* The `Web UI` will call Trivia API for questions data and then will call Gamification API for High Scores data.  Every user’s attempt, UI will call the Trivia API to process the user’s attempt data (please refer to the application architecture).
 
 NOTE: For Part 1, Instead of event-driven approach for sending  any events (like user's attempt) from UI,
 we call gamification API to mutate the game stat data. This is a kind of Remote Procedure Call (RPC) approach.

@@ -53,8 +53,8 @@ NOTE: For Part 1, Instead of event-driven approach for sending  any events (like
 we call gamification API to mutate the game stat data. This is a kind of Remote Procedure Call (RPC) approach.
 Also, we've used RDBMS temporarily for gamification data store.
 
-For Part 2, we will apply the following features:
-   - Event-Driven approach
+* For Part 2, we will apply the following features:
+   - Event-Driven approachß
    - Use MongoDB for gamification
    - Improve DB design
    - Use Kafka for Event-Driven

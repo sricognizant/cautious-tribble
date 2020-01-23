@@ -1,5 +1,23 @@
 # Evaluating Micronaut Part 1
 
+=== Application architecture
+
+image::micronaut-arc.png[]
+
+* `Trivia microservice` is responsible for sending the event, storing data, checking attempts and generate result. It uses hibernate as a data access layer.
+* `Gamification microservice` manages all gamification busing logic and including checking the result, assign points, assign badges and updates the highest score board. It uses MongoDB for data storage.
+
+NOTE: For Part 1, Instead of event-driven approach for sending  any events (like user's attempt) from UI,
+we call gamification API to mutate the game stat data. This is a kind of Remote Procedure Call (RPC) approach.
+Also, we've used RDBMS temporarily for gamification data store.
+
+=== Web UI
+
+image::micronaut-app-ui.png[]
+
+* The `Web UI` will call Trivia API for questions data and then will call Gamification API for High Scores data.  Every user’s attempt, UI will call the Trivia API to process the user’s attempt data (please refer to the application architecture).
+
+
 === Software Requirements
 
 In order to do this workshop, you need the following:
@@ -35,23 +53,8 @@ Once done, you can clone this repo:
 git clone https://github.com/linoyabut/micronaut-app.git
 ----
 
-=== Application architecture
-
-image::micronaut-arc.png[]
-
-* `Trivia microservice` is responsible for sending the event, storing data, checking attempts and generate result. It uses hibernate as a data access layer.
-* `Gamification microservice` manages all gamification busing logic and including checking the result, assign points, assign badges and updates the highest score board. It uses MongoDB for data storage.
-
-NOTE: For Part 1, Instead of event-driven approach for sending  any events (like user's attempt) from UI,
-we call gamification API to mutate the game stat data. This is a kind of Remote Procedure Call (RPC) approach.
-Also, we've used RDBMS temporarily for gamification data store.
-
-=== Web UI
-
-image::micronaut-app-ui.png[]
-
-* The `Web UI` will call Trivia API for questions data and then will call Gamification API for High Scores data.  Every user’s attempt, UI will call the Trivia API to process the user’s attempt data (please refer to the application architecture).
-
+Then, run all Microservices including the Web UI by cd into the 3 sub projects (trivia, gamification and react-client) and
+check the individual instruction on how to run each sub project.
 
 .For Part 2, we will apply the following features:
    - Event-Driven approach
@@ -60,6 +63,7 @@ image::micronaut-app-ui.png[]
    - Use Kafka for Event-Driven
    - Cloud-Native features (common discovery services, distributed tracing and cloud runtimes)
    - Use Reactive programming.
+   - Dockerizing all microservices
 
 
 

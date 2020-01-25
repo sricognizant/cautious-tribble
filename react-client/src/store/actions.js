@@ -1,2 +1,4 @@
 export const ANSWER_QUESTION = 'ANSWER_QUESTION';
 export const SET_ATTEMPTS = 'SET_ATTEMPTS';
+export const GET_LEADERBOARD = "GET_LEADERBOARD";
+export const GET_USERID = "GET_USERID";

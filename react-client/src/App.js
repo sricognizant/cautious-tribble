@@ -3,7 +3,7 @@ import './App.css';
 import Question from './components/question/question';
 import Statistics from './components/statistics/statistics';
 import LeaderBoard from './components/leaderboard/leaderboard';
-import MedalTally from './components/medaltally/medaltally';
+import Attempts from "./components/attempts/attempts";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <Question />
         <Statistics />
         <LeaderBoard />
-        <MedalTally />
+        <Attempts />
       </div>
     </div>
   );

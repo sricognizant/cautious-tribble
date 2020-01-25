@@ -1,34 +1,40 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import './statistics.css';
-const Statistics = props => {
-  console.log(props);
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import "./statistics.css";
+import { getGameStats } from "../../utils/service";
 
-  let renderList = <span>Loading ... </span>;
-  if (props.attemptList) {
-    renderList = props.attemptList.map((item, index) => {
-      return (
-        <tr key={item.id}>
-          <td>{item.user.name}</td>
-          <td>{item.answer}</td>
-          <td>{item.result ? 'Correct' : 'InCorrect'}</td>
-        </tr>
+const Statistics = props => {
+  const [gamestats, setGameStats] = useState({});
+
+  useEffect(() => {
+    if (props.userId) {
+      const timer = setInterval(
+        () => getGameStats(props.userId).then(res => setGameStats(res)),
+        3000
       );
-    });
-  }
+
+      return () => clearInterval(timer);
+    }
+  });
 
   return (
     <div className="Statistics">
-      <h1>Attempt Statistics </h1>
+      <h1>Game Stats </h1>
       <table>
         <thead>
           <tr>
-            <th>Name/Alias</th>
-            <th>Answered</th>
-            <th>Result</th>
+            <th style={{ width: "8%" }}>Username</th>
+            <th style={{ width: "11%" }}>Total Score</th>
+            <th style={{ width: "11%" }}>Badge</th>
           </tr>
         </thead>
-        <tbody>{renderList}</tbody>
+        <tbody>
+          <tr>
+            <td style={{ width: "8%" }}>{gamestats.userId}</td>
+            <td style={{ width: "11%" }}>{gamestats.score}</td>
+            <td style={{ width: "11%" }}>{gamestats.badge}</td>
+          </tr>
+        </tbody>
       </table>
     </div>
   );
@@ -36,8 +42,8 @@ const Statistics = props => {
 
 const mapStateToProps = state => {
   return {
-    attemptList: state.attemptList
+    userId: state.userId
   };
 };
 
-export default connect(mapStateToProps)(Statistics);
+export default connect(mapStateToProps, null)(Statistics);

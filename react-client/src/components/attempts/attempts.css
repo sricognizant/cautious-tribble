@@ -1,0 +1,25 @@
+.MedalTally {
+  padding: 20px 0;
+}
+
+.MedalTally table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.MedalTally td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.MedalTally th {
+  background-color: #1546a1;
+  color: white;
+}
+
+.MedalTally tr:nth-child(even) {
+  background-color: #dddddd;
+}

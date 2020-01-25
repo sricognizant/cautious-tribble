@@ -1,15 +1,10 @@
 package org.micronaut.domain;
 
 import io.micronaut.core.annotation.Introspected;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 @NoArgsConstructor
-@ToString
-@EqualsAndHashCode
-@Getter
+@Data
 @Introspected
 public class ResultTrivia {
     private long userId;

@@ -1,19 +1,14 @@
 package org.micronaut.domain;
 
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-@Getter
-@ToString
-@EqualsAndHashCode
+@Data
 @Entity
 @AllArgsConstructor
 public class BadgeCard {

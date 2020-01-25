@@ -29,9 +29,9 @@ public class TriviaControllerTest {
 
     @Test
     void testGetTrivia() {
-        when(triviaService.getTrivia()).thenReturn(new Trivia("Who is the president of the USA",
+        when(triviaService.getTrivia(0)).thenReturn(new Trivia("Who is the president of the USA",
                 "Obama|Trump|Lincon", 1));
-        Trivia trivia = client.toBlocking().retrieve(HttpRequest.GET("/questions"), Trivia.class);
+        Trivia trivia = client.toBlocking().retrieve(HttpRequest.GET("/questions/0"), Trivia.class);
         Assertions.assertEquals("Who is the president of the USA", trivia.getQuestion());
     }
 

@@ -34,7 +34,7 @@ public class TriviaServiceTest {
 
         when(triviaRepository.findAll()).thenReturn(list);
 
-         final String question = triviaService.getTrivia().getQuestion();
+         final String question = triviaService.getTrivia(0).getQuestion();
 
         Assertions.assertTrue(question.equalsIgnoreCase("Who is the president of the USA")
                 || question.equalsIgnoreCase("What's the real name of Spiderman"));

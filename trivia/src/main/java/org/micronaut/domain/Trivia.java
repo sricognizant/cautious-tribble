@@ -17,6 +17,7 @@ public class Trivia {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+
     private String question;
 
     private String choices;

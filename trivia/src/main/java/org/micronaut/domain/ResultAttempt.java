@@ -1,37 +1,38 @@
 package org.micronaut.domain;
 
+import lombok.*;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import java.time.LocalDateTime;
 
-import javax.persistence.*;
-
-@Entity
-@AllArgsConstructor
 @Data
-@NoArgsConstructor
-public class ResultAttempt {
+@Entity
+public final class ResultAttempt {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "USER_ID")
-    private User user;
-
+    private Long userId;
+    private LocalDateTime localDateTime;
     private String question;
-
     private String answer;
+    private int attemptId;
+    private boolean isCorrect;
 
-    private boolean result;
 
-    public ResultAttempt(User user, String question, String answer, boolean result) {
-        this.user = user;
+    public ResultAttempt(Long userId, LocalDateTime localDateTime, String question, String answer, int attemptId,
+                         boolean isCorrect) {
+        this.userId = userId;
+        this.localDateTime = localDateTime;
         this.question = question;
         this.answer = answer;
-        this.result = result;
+        this.attemptId = attemptId;
+        this.isCorrect = isCorrect;
     }
 
+    public ResultAttempt() {
+    }
 }

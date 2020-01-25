@@ -9,16 +9,20 @@ import io.micronaut.http.client.annotation.Client;
 import io.micronaut.test.annotation.MicronautTest;
 import io.micronaut.test.annotation.MockBean;
 import org.junit.jupiter.api.Test;
-import org.micronaut.domain.ResultAttempt;
-import org.micronaut.domain.User;
+import org.micronaut.Utils;
+import org.micronaut.domain.*;
 import org.micronaut.service.TriviaResultService;
 import org.micronaut.service.TriviaResultServiceImpl;
+import org.micronaut.service.TriviaService;
+import org.micronaut.service.TriviaServiceImpl;
 
 import javax.inject.Inject;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.micronaut.Utils.dateFormat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -32,42 +36,76 @@ public class TriviaResultControllerTest {
     @Inject
     TriviaResultService triviaResultService;
 
+    @Inject
+    GamificationClient gamificationClient;
+
+    @Inject
+    TriviaService triviaService;
+
     @Test
     void testPostResultAttempt() {
+        User user = new User();
+        user.setName("name");
+        user.setId(1l);
+
+        Response response1 = new Response();
+        response1.setAnswer("Trump");
+        response1.setQuestion("Who is the president of the USA");
+        response1.setChoices("Obama|Trump|Lincon");
+        response1.setCorrectAnswer(1);
+        response1.setUser(user);
 
         ResultAttempt resultAttempt = new ResultAttempt();
-        resultAttempt.setAnswer("Donald Trump");
+        resultAttempt.setAnswer("Trump");
         resultAttempt.setQuestion("Who is the president of the USA");
-        resultAttempt.setResult(true);
-        resultAttempt.setUser(new User("Joe"));
+        resultAttempt.setLocalDateTime(LocalDateTime.now());
+        resultAttempt.setCorrect(true);
+        resultAttempt.setUserId(1l);
+        resultAttempt.setAttemptId(1);
 
-        when(triviaResultService.postTriviaResults(resultAttempt))
-                .thenReturn(resultAttempt);
+        ResultAttemptDTO resultAttemptDTO = new ResultAttemptDTO(resultAttempt.getUserId(),
+                Utils.dateFormat(LocalDateTime.now()), resultAttempt.getQuestion(), resultAttempt.getAnswer(),
+                String.valueOf(resultAttempt.isCorrect()));
 
-         HttpResponse response = client.toBlocking().exchange(HttpRequest.POST("results", resultAttempt));
+        when(triviaService.checkUser(user)).thenReturn(user);
+        when(triviaResultService.checkResponse(response1)).
+                thenReturn(1);
 
-        assertEquals(HttpStatus.CREATED, response.getStatus());
+       /* when(triviaResultService.postTriviaResults(resultAttempt))
+                .thenReturn(resultAttempt);*/
+
+       /* when(gamificationClient.save(1l, 1, 1)).
+                thenReturn(new Result(1l,1,1));
+*/
+        when(triviaResultService.resultAttemptDTO(resultAttempt))
+                .thenReturn(resultAttemptDTO);
+
+       HttpResponse<ResultAttemptDTO> response = client.toBlocking().exchange(HttpRequest.POST("results", response1));
+
+        assertEquals(response.getBody().get(), resultAttemptDTO);
     }
 
     @Test
     void testGetResultAttempt() {
-        ResultAttempt resultAttempt1 = new ResultAttempt();
-        resultAttempt1.setAnswer("Donald Trump");
-        resultAttempt1.setQuestion("Who is the president of the USA");
-        resultAttempt1.setResult(true);
-        resultAttempt1.setUser(new User("Joe"));
+        ResultAttemptDTO resultAttemptDTO = new ResultAttemptDTO();
+        resultAttemptDTO.setAnswer("Donald Trump");
+        resultAttemptDTO.setQuestion("Who is the president of the USA");
+        resultAttemptDTO.setLocalDateTime("22-01-2020");
+        resultAttemptDTO.setUserId(1l);
 
-        ResultAttempt resultAttempt2 = new ResultAttempt();
-        resultAttempt2.setAnswer("Peter Parker");
-        resultAttempt2.setQuestion("What's the real name of Spiderman");
-        resultAttempt2.setResult(true);
-        resultAttempt2.setUser(new User("Joe"));
 
-        when(triviaResultService.getResults("Joe")).
-                thenReturn(Arrays.asList(resultAttempt1, resultAttempt2));
 
-        ResultAttempt[] response = client.toBlocking().retrieve(HttpRequest.GET("/results/users/Joe"),
-                ResultAttempt[].class);
+        ResultAttemptDTO resultAttemptDTO2 = new ResultAttemptDTO();
+        resultAttemptDTO2.setAnswer("Peter Parker");
+        resultAttemptDTO2.setQuestion("What's the real name of Spiderman");
+        resultAttemptDTO.setLocalDateTime("22-01-2020");
+        resultAttemptDTO2.setUserId(1l);
+
+        when(triviaResultService.getResults(1)).
+                thenReturn(Arrays.asList(resultAttemptDTO, resultAttemptDTO2));
+
+        ResultAttemptDTO[] response = client.toBlocking().retrieve(HttpRequest.GET("/results/users/1"),
+                ResultAttemptDTO[].class);
 
         assertEquals(2, response.length);
 
@@ -79,5 +117,16 @@ public class TriviaResultControllerTest {
     TriviaResultService triviaResultService() {
         return mock(TriviaResultService.class);
     }
+
+    @MockBean(GamificationClient.class)
+    GamificationClient gamificationClient() {
+        return mock(GamificationClient.class);
+    }
+
+    @MockBean(TriviaServiceImpl.class)
+    TriviaService triviaService() {
+        return mock(TriviaService.class);
+    }
+
 
 }

@@ -1,26 +1,27 @@
 package org.micronaut.domain;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-@Entity
 @AllArgsConstructor
+@Entity
 @Data
-@NoArgsConstructor
 public class User {
 
+    private String name;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     @Column(name = "USER_ID")
     private Long id;
 
-    private String name;
-
-    public User(String userName) {
-        this.name = name;
+    // Empty constructor for JSON/JPA
+    public User() {
+        name = null;
     }
+
 }

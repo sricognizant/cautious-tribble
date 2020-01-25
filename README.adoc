@@ -62,6 +62,7 @@ icon:hand-o-right[] Then, run all Microservices including the Web UI by cd into 
 check the individual instruction on how to run each sub project.
 
 For Part 2, we will apply the following features:
+
    - Event-Driven approach
    - Use MongoDB for Gamification
    - Improve DB design

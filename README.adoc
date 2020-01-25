@@ -61,7 +61,7 @@ git clone https://github.com/linoyabut/micronaut-app.git
 icon:hand-o-right[] Then, run all Microservices including the Web UI by cd into the 3 sub projects (trivia, gamification and react-client) and
 check the individual instruction on how to run each sub project.
 
-icon:hand-o-right[] For Part 2, we will apply the following features:
+For Part 2, we will apply the following features:
    - Event-Driven approach
    - Use MongoDB for Gamification
    - Improve DB design

@@ -1,3 +1,8 @@
+:toc: left
+:toclevels: 4
+:source-highlighter: highlightjs
+:icons: font
+
 # Evaluating Micronaut Part 1
 
 === Application architecture
@@ -53,10 +58,10 @@ Once done, you can clone this repo:
 git clone https://github.com/linoyabut/micronaut-app.git
 ----
 
-Then, run all Microservices including the Web UI by cd into the 3 sub projects (trivia, gamification and react-client) and
+icon:hand-o-right[] Then, run all Microservices including the Web UI by cd into the 3 sub projects (trivia, gamification and react-client) and
 check the individual instruction on how to run each sub project.
 
-.For Part 2, we will apply the following features:
+icon:hand-o-right[] For Part 2, we will apply the following features:
    - Event-Driven approach
    - Use MongoDB for Gamification
    - Improve DB design
@@ -64,8 +69,7 @@ check the individual instruction on how to run each sub project.
    - Cloud-Native features (common discovery services, distributed tracing and cloud runtimes)
    - Use Reactive programming.
    - Dockerizing all microservices
-
-
+   - Upgrade this application with the release version of the framework as we've encountered some issues on the Micronaut Data.
 
 
 

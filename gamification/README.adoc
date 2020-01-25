@@ -1,0 +1,7 @@
+:toc: left
+:toclevels: 4
+:source-highlighter: highlightjs
+:icons: font
+
+icon:hand-o-right[] To run the application:
+    $ ./gradlew or gradle run

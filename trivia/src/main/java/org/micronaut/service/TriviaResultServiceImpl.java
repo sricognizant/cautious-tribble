@@ -1,6 +1,5 @@
 package org.micronaut.service;
 
-import org.micronaut.Utils;
 import org.micronaut.domain.Response;
 import org.micronaut.domain.ResultAttempt;
 import org.micronaut.domain.ResultAttemptDTO;

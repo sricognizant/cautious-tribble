@@ -14,8 +14,6 @@ import javax.persistence.Id;
 @NoArgsConstructor
 public class ScoreCard {
 
-    public static final int DEFAULT_SCORE = 10;
-
     @Id
     @GeneratedValue
     @Column(name = "CARD_ID")
@@ -25,7 +23,7 @@ public class ScoreCard {
     private Long userId;
 
     @Column(name = "ATTEMPT_ID")
-    private Long attemptId;
+    private int attemptId;
 
     @Column(name = "SCORE_TS")
     private long scoreTimestamp;
@@ -34,11 +32,18 @@ public class ScoreCard {
     private int score;
 
 
-    public ScoreCard(Long cardId, Long userId, int attemptId, int score){
+    public ScoreCard(Long cardId, Long userId, int attemptId, int score) {
         this.cardId = cardId;
         this.userId = userId;
         this.attemptId = attemptId;
         this.scoreTimestamp = System.currentTimeMillis();
-        this.score = DEFAULT_SCORE;
+        this.score = score;
+    }
+
+    public ScoreCard(Long userId, int attemptId, int score) {
+        this.userId = userId;
+        this.attemptId = attemptId;
+        this.scoreTimestamp = System.currentTimeMillis();
+        this.score = score;
     }
 }

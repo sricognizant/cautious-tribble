@@ -1,9 +1,6 @@
 package org.micronaut.service;
 
-import org.micronaut.domain.Badge;
-import org.micronaut.domain.GameStats;
-import org.micronaut.domain.Result;
-import org.micronaut.domain.ScoreCard;
+import org.micronaut.domain.*;
 import org.micronaut.repository.ScoreCardRepository;
 
 import javax.inject.Singleton;
@@ -29,10 +26,8 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    public void newAttemptForUser(Result result) {
-        int score = calculateScore(result.isCorrect());
-        ScoreCard scoreCard = new ScoreCard(result.getUserId(), result.getAttemptId(), score);
-        scoreCardRepository.save(scoreCard);
+    public ScoreCard newAttemptForUser(Result result) {
+        return scoreCardRepository.save(new ScoreCard(result.getUserId(), result.getAttemptId(), calculateScore(result.isCorrect())));
     }
 
     private Badge BadgeType(double scorePercentage) {
@@ -43,6 +38,11 @@ public class GameServiceImpl implements GameService {
         } else {
             return Badge.BRONZE;
         }
+    }
+
+    @Override
+    public Result createNewResult(ResultTrivia resultTrivia) {
+        return new Result(resultTrivia.getUserId(), resultTrivia.getAttemptId(), resultTrivia.getIsCorrect() == 1 ? true : false);
     }
 
     private int calculateScore(boolean correct) {

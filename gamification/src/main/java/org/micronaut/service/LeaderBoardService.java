@@ -7,7 +7,6 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 public interface LeaderBoardService {
-    List<ScoreCard> getAllScoreCards();
 
     /*
     * Mapping the Object [], returned from database with userid and score to leaderboard obj

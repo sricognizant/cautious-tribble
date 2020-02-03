@@ -5,7 +5,11 @@ import lombok.*;
 
 
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
+@NoArgsConstructor
 public class GameStats {
     private Long userId;
     private int score;

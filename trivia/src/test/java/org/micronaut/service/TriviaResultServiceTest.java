@@ -26,7 +26,6 @@ public class TriviaResultServiceTest {
     @Inject
     TriviaResultService triviaResultService;
 
-
     @Test
     void getTriviaResults() {
 
@@ -61,13 +60,9 @@ public class TriviaResultServiceTest {
         resultAttempt2.setAttemptId(1);
         resultAttempt2.setLocalDateTime(LocalDateTime.now());
 
-        List<ResultAttemptDTO> listDTO = Arrays.asList(resultAttemptDTO1, resultAttemptDTO2);
-
         List<ResultAttempt> listAttempt = Arrays.asList(resultAttempt1, resultAttempt2);
 
         when(triviaResultRepository.findByUserId(1)).thenReturn(listAttempt);
-
-        when(triviaResultService.resultAttemptDTOList(listAttempt)).thenReturn(listDTO);
 
        final List<ResultAttemptDTO> resultAttempts = triviaResultService.getResults(1);
 
@@ -99,8 +94,4 @@ public class TriviaResultServiceTest {
         return mock(TriviaResultRepository.class);
     }
 
-    @MockBean(TriviaResultServiceImpl.class)
-    TriviaResultService triviaResultService() {
-        return mock(TriviaResultService.class);
-    }
 }

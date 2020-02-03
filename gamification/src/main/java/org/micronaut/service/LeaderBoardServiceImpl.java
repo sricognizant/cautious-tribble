@@ -24,11 +24,6 @@ public class LeaderBoardServiceImpl implements LeaderBoardService {
     }
 
     @Override
-    public List<ScoreCard> getAllScoreCards() {
-        return (List) scoreCardRepository.findAll();
-    }
-
-    @Override
     public List<LeaderBoard> getAllLeaderBoardStats() {
         List<Object[]> leaderBoardResults = scoreCardRepository.findAllLeaders();
         return leaderBoardResults.stream().map(LeaderBoardServiceImpl::mapToLeaderBoard)

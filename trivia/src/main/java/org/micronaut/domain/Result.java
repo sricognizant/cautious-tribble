@@ -5,8 +5,10 @@ import io.micronaut.core.annotation.Introspected;
 import lombok.*;
 
 @AllArgsConstructor
+@Getter
+@ToString
+@EqualsAndHashCode
 @Introspected
-@Data
 public class Result {
 
     private long userId;

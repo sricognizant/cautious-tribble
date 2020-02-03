@@ -30,4 +30,7 @@ public abstract class ScoreCardRepository implements CrudRepository<ScoreCard, L
         return entityManager.createQuery(this.query)
                 .getResultList();
     }
+
+    @Override
+    public abstract ScoreCard save(ScoreCard scoreCard);
 }

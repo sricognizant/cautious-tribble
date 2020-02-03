@@ -9,8 +9,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @AllArgsConstructor
+@Getter
+@ToString
+@EqualsAndHashCode
 @Entity
-@Data
+@Setter
 public class User {
 
     private String name;

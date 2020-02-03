@@ -5,8 +5,11 @@ import lombok.*;
 
 @RequiredArgsConstructor
 @AllArgsConstructor
+@Getter
+@ToString
+@EqualsAndHashCode
 @Introspected
-@Data
+@Setter
 public class ResultAttemptDTO {
 
     private long userId;

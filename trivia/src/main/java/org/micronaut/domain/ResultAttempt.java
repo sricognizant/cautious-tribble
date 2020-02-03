@@ -1,15 +1,26 @@
 package org.micronaut.domain;
 
-import lombok.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
 
-@Data
+
+@ToString
+@EqualsAndHashCode
 @Entity
+@Getter
+@Setter
 public final class ResultAttempt {
+
+    /*@ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "USER_ID")
+    private User user;*/
 
     @Id
     @GeneratedValue

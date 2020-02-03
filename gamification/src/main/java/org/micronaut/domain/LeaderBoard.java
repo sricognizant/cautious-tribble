@@ -5,7 +5,10 @@ import lombok.*;
 
 
 @AllArgsConstructor
-@Data
+@Getter
+@ToString
+@EqualsAndHashCode
+@NoArgsConstructor
 public class LeaderBoard {
 
     private String userId;

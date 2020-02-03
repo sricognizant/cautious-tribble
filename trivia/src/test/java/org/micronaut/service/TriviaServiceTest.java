@@ -6,14 +6,16 @@ import io.micronaut.test.annotation.MockBean;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.micronaut.domain.Trivia;
+import org.micronaut.domain.User;
 import org.micronaut.repository.TriviaRepository;
+import org.micronaut.repository.UserRepository;
 
 import javax.inject.Inject;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 
 @MicronautTest
@@ -24,6 +26,9 @@ public class TriviaServiceTest {
 
     @Inject
     TriviaRepository triviaRepository;
+
+    @Inject
+    UserRepository userRepository;
 
     @Test
     void getTrivia(){
@@ -40,9 +45,26 @@ public class TriviaServiceTest {
                 || question.equalsIgnoreCase("What's the real name of Spiderman"));
     }
 
+    @Test
+    void checkUser(){
+       User user = new User();
+       user.setName("joe");
+
+       doReturn(Optional.of(user)).when(userRepository).findByName("joe");
+       doReturn(user).when(userRepository).save(user);
+
+       User user1 = triviaService.checkUser(user);
+
+
+    }
 
     @MockBean(TriviaRepository.class)
     TriviaRepository triviaRepository() {
         return mock(TriviaRepository.class);
+    }
+
+    @MockBean(UserRepository.class)
+    UserRepository userRepository() {
+        return mock(UserRepository.class);
     }
 }

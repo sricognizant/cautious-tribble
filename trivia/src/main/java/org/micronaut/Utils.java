@@ -37,7 +37,7 @@ public final class Utils {
         return resultAttemptDTOS;
     }
 
-    public final static ResultAttemptDTO resultAttemptDTO(ResultAttempt resultAttempt) {
+    public static ResultAttemptDTO resultAttemptDTO(ResultAttempt resultAttempt) {
 
         String date = dateFormat(resultAttempt.getLocalDateTime());
 
@@ -56,6 +56,11 @@ public final class Utils {
         int randomAttemptId = random.nextInt(30);
 
         return randomAttemptId;
+    }
+
+    public static int checkResponse(Response response) {
+        String[] choiceArray = response.getChoices().split("\\|");
+        return choiceArray[response.getCorrectAnswer()].equals(response.getAnswer()) ? 1 : 0;
     }
 }
 

@@ -4,8 +4,11 @@ import io.micronaut.core.annotation.Introspected;
 import lombok.*;
 
 @RequiredArgsConstructor
+@Getter
+@ToString
+@EqualsAndHashCode
 @Introspected
-@Data
+@Setter
 public class Response {
 
     private User user;
